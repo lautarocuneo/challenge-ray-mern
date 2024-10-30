@@ -1,31 +1,27 @@
 import React from 'react';
-import './Signup.scss';
+import './Login.scss';
 import { useNavigate } from 'react-router-dom';
 
-
-const Signup = () => {
+const Login = () => {
 
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-
   return (
-    <div className="signup-container">
-      <h2>Sign Up</h2>
+    <div className="login-container">
+      <h2>Login</h2>
       <form>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">Email</label>
-          <input type="email" className="form-control" id="email" placeholder="Enter your email" onChange = {(e) => setEmail(e.target.value)} />
+          <input type="email" className="form-control" id="email" placeholder="Enter your email" />
         </div>
         <div className="mb-3">
           <label htmlFor="password" className="form-label">Password</label>
           <input type="password" className="form-control" id="password" placeholder="Enter your password" />
         </div>
-        <button type="submit" className="btn btn-primary">Sign Up</button>
+        <button type="submit" className="btn btn-primary">Login</button>
         <div className="mt-4">
-            <p>Already have an account? 
-                <span className="login-link" onClick={() => navigate('/login')}> Login </span>
+            <p>Don´t have an account?
+                <span className="login-link" onClick={() => navigate('/register')}> Sign up </span>
             </p>
         </div>
       </form>
@@ -33,4 +29,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;
