@@ -1,0 +1,12 @@
+body {
+  background-color: #FFFFFF; 
+  font-family: 'Poppins', sans-serif;
+  color: #333333; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+
+  
+}

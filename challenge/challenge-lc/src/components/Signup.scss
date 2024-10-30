@@ -1,0 +1,70 @@
+.signup-container {
+    
+    min-height: 415px;
+    display: inline-block;
+    padding: 2rem;
+    background-color: #FAFAFA;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        
+    h2 {
+     
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    p {
+        font-size: 0.875rem; 
+      }
+      
+
+    .login-link {
+        color: #007BFF; 
+        cursor: pointer;
+    
+        &:hover {
+          color: #0056b3;
+        }
+      }
+      
+
+
+      .form-control {
+        margin-bottom: 1rem;
+        background-color: #FAFAFA; /* Fondo claro */
+        border: 1px solid #CCC; /* Borde claro */
+      
+        &:focus {
+          box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+      
+        &::placeholder {
+          color: #cccccc; 
+         
+        }
+      }
+      
+  
+    .btn-primary {
+        color: #ffffff;
+        background-color: #007BFF; /* Azul clásico */
+        border-color: #007BFF;
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: none;
+      
+        &:hover {
+          background-color: #0056b3; /* Azul más oscuro en hover */
+        }
+      
+        &:focus,
+        &:active {
+          background-color: #007BFF; /* Mantiene el color azul al hacer clic */
+          box-shadow: none;
+          color: #ffffff;
+        }
+      }
+      
+  }
+  
