@@ -2,6 +2,9 @@ const express = require("express");
 const mongoose = require('mongoose');
 const cors = require("cors");
 const UserModel = require('./models/Table');
+const jwt = require('jsonwebtoken');
+
+const SECRET_KEY = 'secret_key'
 
 const app = express();
 app.use(express.json());
