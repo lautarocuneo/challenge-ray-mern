@@ -94,7 +94,6 @@ The user data is persisted using MongoDB. Below is the schema for the `User` mod
   - `email`: (String) The email of the user. This field is unique for each user.
   - `password`: (String) The password of the user.
 
-> **Note**: Security measures such as password hashing or token validation are not implemented, as specified in the exercise description.
 
 ## Technology Choices
 
@@ -110,7 +109,7 @@ The user data is persisted using MongoDB. Below is the schema for the `User` mod
 - **MongoDB with Mongoose**: Used as DB. MongoDB is well-suited for projects that need flexible schemas. Mongoose provides a simple way to interact with MongoDB, offering a schema-based approach to define and validate data.
 - **JWT (JSON Web Token)**: Used to generate tokens for user authentication. JWTs are easy to use for stateless authentication and provide a simple way to encode user information.
 
-### Improvements for the project
+### Commentary
 
-- We could add password hashing with `bcrypt` and implementing HTTPS to improve security.
-- Protecting the `/home` route to ensure only authenticated users can access it.
+- The project is dockerized, which makes setup and deployment easier.
+
