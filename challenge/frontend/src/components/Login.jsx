@@ -20,7 +20,6 @@ const Login = () => {
         if(result.status === 200) {
 
           const token = result.data.token;
-          console.log('Token recibido:', token); 
           localStorage.setItem('token', token);
           navigate('/home');
 
