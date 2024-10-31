@@ -1,6 +1,6 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Signup from './components/signup'
+import Signup from './components/Signup'
 import Login from './components/Login'
 import Home from './components/Home'
 import './App.css';

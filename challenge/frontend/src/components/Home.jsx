@@ -19,10 +19,6 @@ const Home = () => {
             Back to login
         </h6>
     </div>
-      
-      
-    
-      
     );
   };
 
