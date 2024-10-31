@@ -1,4 +1,4 @@
-# Usar una imagen base de Node.js
+
 FROM node:14
 
 
@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 
-EXPOSE 3001
+EXPOSE 3000
 
 
-CMD ["node", "index.js"]
+CMD ["npm", "start"]

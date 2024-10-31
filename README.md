@@ -102,6 +102,8 @@ The user data is persisted using MongoDB. Below is the schema for the `User` mod
 - **React**: Chosen for the frontend due to its component-based architecture, making the UI easy to develop, reuse, and maintain. React also provides great flexibility in building dynamic and responsive user interfaces. One of the most widely used technologies today.
 - **Axios**: Used for making HTTP requests because of its simplicity and support for handling responses and errors.
 - **React Router**: Enables smooth navigation between different pages in the app, such as login, signup, and home.
+- **Bootstrap**: Used for quick and easy styling of components, providing a consistent and responsive design with minimal custom CSS.
+- **SASS**: I added some custom styles using SASS, which provides more flexibility in styling with features like nesting, variables, and mixins.
 
 #### 2. **Backend**
 - **Node.js with Express**: Chosen for its simplicity in setting up a server and handling routing. Express provides a straightforward way to define endpoints and manage HTTP requests and responses.
