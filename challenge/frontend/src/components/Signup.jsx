@@ -14,7 +14,7 @@ const Signup = () => {
   const [errorMessage, setErrorMessage] = useState("");
   
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) => { //esta funcion se ejecuta al momento del submit
     e.preventDefault();
     axios.post('http://localhost:3001/register', { email, password })
       .then(response => {
