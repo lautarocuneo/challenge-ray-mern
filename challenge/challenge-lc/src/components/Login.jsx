@@ -17,14 +17,25 @@ const Login = () => {
     axios.post('http://localhost:3001/login', {email, password})
     .then(result => {
         console.log(result);
-        if(result.data === "Success") {
+        if(result.status === 200) {
+
+          const token = result.data.token;
+          console.log('Token recibido:', token); 
+          localStorage.setItem('token', token);
           navigate('/home');
-        }
-        else {
-          setErrorMessage(result.data);
+
         }
     })
-    .catch(err => console.log(err));
+    .catch(error => {
+      if (error.response) {
+        
+        const errorMsg = error.response.data.message;
+        setErrorMessage(`Error: ${errorMsg}`);
+      } else {
+        
+        setErrorMessage('Error connecting to the server');
+      }
+    });
   }
 
 

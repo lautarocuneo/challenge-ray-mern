@@ -1,10 +1,9 @@
 const express = require("express");
 const mongoose = require('mongoose');
 const cors = require("cors");
-const UserModel = require('./models/Table');
+const { SECRET_JWT_KEY } = require('./config');
 const jwt = require('jsonwebtoken');
-
-const SECRET_KEY = 'secret_key'
+const UserModel = require('./models/Table');
 
 const app = express();
 app.use(express.json());
@@ -18,15 +17,22 @@ app.post('/login', (req, res) => {
     .then(user => {
         if(user) {
             if(user.password === password){
-                res.json("Success");
-            } else {
-                res.json("Incorrect password");
+                const token = jwt.sign({userId: user._id, email: user.email}, SECRET_JWT_KEY, {expiresIn: '1h'});
+
+                res.status(200).json({token: token})
+            } 
+            
+            else {
+                res.status(401).json({ message: 'Incorrect password' });
             }
         }
         else {
-            res.json("The user dont exist");
+            res.status(404).json({ message: 'User does not exist' });
         }
     })
+    .catch(err => {
+        res.status(500).json({ message: 'Server error', error: err });
+    });
 })
 
 app.post('/register', (req, res) => {
@@ -34,20 +40,24 @@ app.post('/register', (req, res) => {
 
     UserModel.findOne({ email: email })
         .then(user => {
-            if (user) {    
-                res.json("Email already registered");
+            if (user) {  
+
+                res.status(409).json({ message: 'Email already registered' });
+
             } else {
              
                 UserModel.create({ email, password })
-                    .then(newUser => res.json(newUser))
-                    .catch(err => res.json(err));
+                    .then(newUser => res.status(201).json(newUser))
+                    .catch(err => res.status(500).json({ message: 'Error registering user', error: err }));
             }
         })
-        .catch(err => res.json(err));
+        .catch(err => {
+            res.status(500).json({ message: 'Server error', error: err });
+        });
 });
 
 
 
 app.listen(3001, () => {
-    console.log("server is running");
-})
+    console.log("Server is running on port 3001");
+});

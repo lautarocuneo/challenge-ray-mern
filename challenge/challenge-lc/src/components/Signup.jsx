@@ -16,17 +16,24 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3001/register', {email, password})
-    .then(result => {
-        if(result.data != "Email already registered") {
-        console.log(result);
-        navigate('/login');
+    axios.post('http://localhost:3001/register', { email, password })
+      .then(response => {
+        if (response.status === 201) {
+          
+          navigate('/login');
+
         }
-        else{
-            setErrorMessage(result.data);
+      })
+      .catch(error => {
+        if (error.response) {
+          
+          const errorMsg = error.response.data.message;
+          setErrorMessage(`Error: ${errorMsg}`);
+
+        } else {
+          setErrorMessage('Error connecting to the server');
         }
-    })
-    .catch(err => console.log(err));
+      });
   }
 
   return (
