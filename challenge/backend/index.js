@@ -12,7 +12,7 @@ app.use(cors());
 
 const mongoURI = process.env.MONGO_URI || "mongodb://mongodb:27017/challengedatabase";
 
-mongoose.connect(mongoURI, {
+mongoose.connect(mongoURI, { //conecto a la base de datos
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
