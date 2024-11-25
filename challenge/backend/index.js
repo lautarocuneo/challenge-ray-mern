@@ -28,7 +28,7 @@ app.post('/login', (req, res) => {
         if(user) { //si existe el mail
             if(user.password === password){ //si coincide el password que me mando el cliente con el que esta en la base de datos
                 const token = jwt.sign({userId: user._id, email: user.email}, SECRET_JWT_KEY, {expiresIn: '1h'}); 
-                res.status(200).json({token: token}); //devuelvo lo que corresponda , el token con data.
+                res.status(200).json({token: token}); //devuelvo lo que corresponda , el token con data. no se crea recurso nuevo
             } else {
                 res.status(401).json({ message: 'Incorrect password' }); //si no esta mal la contraseña
             }
@@ -50,7 +50,7 @@ app.post('/register', (req, res) => {
                 res.status(409).json({ message: 'Email already registered' }); //si lo encuentro, ya esta registrado
             } else {
                 UserModel.create({ email, password }) //lo creo en la base de datos
-                    .then(newUser => res.status(201).json(newUser)) //si no devuelvo el nuevo usuario y todo ok
+                    .then(newUser => res.status(201).json(newUser)) //si no devuelvo el nuevo usuario y todo ok, se crea recurso nuevo
                     .catch(err => res.status(500).json({ message: 'Error registering user', error: err })); //error falopa
             }
         })
