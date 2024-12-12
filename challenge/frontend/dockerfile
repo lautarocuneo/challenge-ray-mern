@@ -1,12 +1,20 @@
 
-FROM node:18-alpine
+#el dockerfile es como una plantilla para crear imagenes, en este caso estoy haciendo una imagen personalisada que es como una plantilla para instanciar contenedores
+#los contenedores son entornos aislado que se utiliza para ejecutar aplicacione de manera consistente endistintos entornos
+FROM node:18-alpine 
+#aca en la primera linea estoy usando la imagen base desde la que creo mi imagen personalisada, la imagen base es una para node con linux de fondo. (alpine es distro de linux)
 
+#todos los comandos RUN, CMD ENTRY.., COPY ,ADD se ejecutan en /app .
+#/app es un directorio (carpeta) dentro del contenedor.
 WORKDIR /app
 
+#aca copio todo lo quje tiene el json , que el package.json tiene todo lo que instale para que corra el proyecto
 COPY package.json package-lock.json ./
 
+#con esto instalo eso mismo que copie.
 RUN npm install
 
+#luego de eso copio todos los archivos restantes del directorio actual de mi maquina host (mi compu) al docker.
 COPY . .
 
 EXPOSE 5173
